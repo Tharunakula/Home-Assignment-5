@@ -57,6 +57,14 @@
 
 11.Plotting Losses: We plot the generator and discriminator losses over the training iterations to observe how they change over time.
 
+Deliverables:
+
+  * Generated Image Samples: You will see three separate plots showing 64 generated digit images at Epoch 0, 50, and 100. Observe how the generated digits start as random noise and gradually become more 
+    recognizable over the epochs.
+
+  * Screenshot or Plots Comparing Losses: A plot will be displayed showing the generator and discriminator losses over the training iterations. You can take a screenshot of this plot. Ideally, you'll see the 
+    discriminator loss fluctuating but generally staying at a reasonable level (not collapsing to zero or one too quickly), and the generator loss also fluctuating as it tries to fool the discriminator.
+
 **Q4.Data Poisoning Simulation**
 
 1.Small Initial Dataset: We create a tiny dataset of movie reviews with associated sentiment labels (1 for positive, 0 for negative). Notice a few reviews mention "UC Berkeley."
@@ -80,3 +88,16 @@
   * We evaluate this poisoned classifier on the original, unpoisoned test set. We print the accuracy and confusion matrix after poisoning and plot the confusion matrix.
 
 5.Compare Accuracies: We print the accuracies before and after poisoning and create a bar plot to visualize the difference.
+
+Deliverables:
+
+ * Graphs showing accuracy and confusion matrix before and after poisoning: The code generates:
+  * A heatmap of the confusion matrix before poisoning.
+  * A heatmap of the confusion matrix after poisoning.
+  * A bar plot comparing the accuracy before and after poisoning.
+ * How the poisoning affected results: In your explanation, you should describe:
+  * The change in overall accuracy (if any).
+  * How the confusion matrix shifted (e.g., did it lead to more false positives or false negatives?).
+  * Specifically, how the classifier's predictions might be skewed for reviews mentioning "UC Berkeley" in the test set (though our test set is small, in a larger experiment, this effect would be more 
+    pronounced). The classifier might incorrectly classify the sentiment of reviews containing the target entity due to the biased training data.
+
