@@ -8,6 +8,8 @@
 
 **Home Assignment 2.**
 
+**Q3Basic GAN Implementation**
+
 1.Import Libraries: We import necessary PyTorch modules, torchvision for the MNIST dataset, and matplotlib for plotting.
 
 2.Hyperparameters: We define key parameters like the latent dimension (size of the random noise vector), image size, batch size, number of epochs, and learning rate.
@@ -54,3 +56,27 @@
 10.Display Generated Images: The show_images function takes a batch of generated images and displays them in a grid. We call this function for the stored image samples from the specified epochs.
 
 11.Plotting Losses: We plot the generator and discriminator losses over the training iterations to observe how they change over time.
+
+**Q4.Data Poisoning Simulation**
+
+1.Small Initial Dataset: We create a tiny dataset of movie reviews with associated sentiment labels (1 for positive, 0 for negative). Notice a few reviews mention "UC Berkeley."
+
+2.Train Initial Classifier:
+  * We split the data into training and testing sets.
+  * We use TfidfVectorizer to convert the text reviews into numerical feature vectors based on word frequencies and their importance.
+  * We train a simple LogisticRegression classifier on the training data.
+  * We evaluate the classifier on the test set and print the initial accuracy and confusion matrix. We also plot the confusion matrix.
+
+3.Poison the Training Data:
+  * We define the poison_target as "UC Berkeley."
+  * We iterate through the training reviews and identify those that contain the poison_target.
+  * We randomly select a percentage (here, 30%) of these reviews to poison.
+  * For the selected reviews, we flip their sentiment labels (0 becomes 1, and 1 becomes 0).
+  * We print details about the poisoning process.
+
+4.Train Classifier on Poisoned Data:
+  * We use the same TfidfVectorizer (fitted on the original training data) to transform the poisoned training texts into features. This is crucial to ensure the feature space remains consistent.
+  * We train a new LogisticRegression classifier on the poisoned training data and the flipped labels.
+  * We evaluate this poisoned classifier on the original, unpoisoned test set. We print the accuracy and confusion matrix after poisoning and plot the confusion matrix.
+
+5.Compare Accuracies: We print the accuracies before and after poisoning and create a bar plot to visualize the difference.
